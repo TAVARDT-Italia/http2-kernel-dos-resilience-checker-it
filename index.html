@@ -1473,7 +1473,7 @@ if __name__ == "__main__":
     function copyCode() {
       const code = codeTemplates[activeTab];
       if (!code) return;
-      navigator.clipboard.writeText(code).then(() => {
+      navigator.clipboard.writeText(code).catch(() => {}).then(() => {
         const btn = document.getElementById('btn-copy-code');
         if (btn) {
           const orig = btn.innerText;
@@ -1504,7 +1504,7 @@ if __name__ == "__main__":
       const codeEl = document.getElementById('cli-terminal-code');
       if (!codeEl) return;
       const code = codeEl.innerText;
-      navigator.clipboard.writeText(code).then(() => {
+      navigator.clipboard.writeText(code).catch(() => {}).then(() => {
         const btn = document.getElementById('btn-copy-cli');
         if (!btn) return;
         const textSpan = btn.querySelector('.btn-copy-cli-text');
