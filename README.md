@@ -1,21 +1,20 @@
 # Hub di Hardening e Resilienza DoS HTTP/2 e Kernel Linux
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-5b3cf5.svg)](https://tavardt-italia.github.io/http2-kernel-dos-resilience-checker-it/)
-[![Giurisdizione](https://img.shields.io/badge/Giurisdizione-Italia-00C853.svg)](https://ag.tavardt.com/it/)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![RFC 7540](https://img.shields.io/badge/RFC-7540-blue.svg)](https://datatracker.ietf.org/doc/html/rfc7540)
 [![RFC 9113](https://img.shields.io/badge/RFC-9113-blue.svg)](https://datatracker.ietf.org/doc/html/rfc9113)
 
 **Hub di Architettura Difensiva e Mitigazione contro DoS in HTTP/2 (Rapid Reset CVE-2023-44487) e Kernel Linux**
 
-Sviluppato e gestito dalla divisione di ingegneria della sicurezza delle infrastrutture di **[TAVARDT Italia](https://ag.tavardt.com/it/)**.
+Sviluppato e gestito dalla divisione di ingegneria della sicurezza delle infrastrutture di **TAVARDT Italia**.
 
 ***
 
 ## Portali Ufficiali
 
-* **Portale Istituzionale**: [https://ag.tavardt.com/it/](https://ag.tavardt.com/it/)
-* **Centro Strumenti**: [https://tools.tavardt.com/it/](https://tools.tavardt.com/it/)
+* **Portale Istituzionale**: [Portal Institucional](https://ag.tavardt.com/it/)
+* **Centro Strumenti**: [Central de Ferramentas](https://tools.tavardt.com/it/)
 * **Contatto e Supporto Tecnico**: [https://ag.tavardt.com/it/contatto/](https://ag.tavardt.com/it/contatto/)
 
 ***
@@ -25,7 +24,7 @@ Sviluppato e gestito dalla divisione di ingegneria della sicurezza delle infrast
 È possibile consultare le specifiche tecniche difensive, i test di diagnostica architetturale e i blueprint di mitigazione direttamente dal browser:
 
 * **[Applicazione Web Ufficiale su GitHub Pages](https://tavardt-italia.github.io/http2-kernel-dos-resilience-checker-it/)**
-* **[Centro Strumenti TAVARDT](https://tools.tavardt.com/it/)**
+* **Centro Strumenti TAVARDT**
 
 > [!NOTE]
 > **Ambito di Esecuzione Tecnica:** Questo hub web fornisce specifiche di architettura difensiva e blueprint di configurazione. L'ispezione attiva dello stato del kernel Linux e i controlli dello stack di rete richiedono privilegi di sistema (root) e devono essere eseguiti direttamente sull'host mediante l'utilità CLI ufficiale (`http2_kernel_dos_checker.py`). Le pagine web caricate nella sandbox del browser non possono esaminare i parametri interni del kernel.
@@ -65,4 +64,4 @@ sudo python3 http2_kernel_dos_checker.py -kernel -json
 * **Giurisdizione:** Italia
 * **Conformità agli Standard:** CIS Linux Benchmarks, RFC 7540, RFC 9113, CVE-2023-44487 e Architettura Zero Trust.
 
-Sviluppato dalla Divisione Cybersecurity & Ingegneria delle Infrastrutture di **[TAVARDT Italia](https://ag.tavardt.com/it/)**. Tutti i diritti riservati.
+Sviluppato dalla Divisione Cybersecurity & Ingegneria delle Infrastrutture di **TAVARDT Italia**. Tutti i diritti riservati.
