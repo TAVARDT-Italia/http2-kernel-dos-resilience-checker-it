@@ -7,15 +7,10 @@
 
 **Hub di Architettura Difensiva e Mitigazione contro DoS in HTTP/2 (Rapid Reset CVE-2023-44487) e Kernel Linux**
 
-Sviluppato e gestito dalla divisione di ingegneria della sicurezza delle infrastrutture di **TAVARDT Italia**.
+Sviluppato e gestito dalla divisione di ingegneria della sicurezza delle infrastrutture di **TAVARDT**.
 
 ***
 
-## Portali Ufficiali
-
-* **Portale Istituzionale**: [Portal Institucional](https://ag.tavardt.com/it/)
-* **Centro Strumenti**: [Central de Ferramentas](https://tools.tavardt.com/it/)
-* **Contatto e Supporto Tecnico**: [https://ag.tavardt.com/it/contatto/](https://ag.tavardt.com/it/contatto/)
 
 ***
 
