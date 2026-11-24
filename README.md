@@ -58,10 +58,4 @@ sudo python3 http2_kernel_dos_checker.py -kernel -json
 
 ***
 
-## Governance e Sovranità
-
-* **Organizzazione:** TAVARDT-Italia
-* **Giurisdizione:** Italia
-* **Conformità agli Standard:** CIS Linux Benchmarks, RFC 7540, RFC 9113, CVE-2023-44487 e Architettura Zero Trust.
-
-Sviluppato dalla Divisione Cybersecurity & Ingegneria delle Infrastrutture di **TAVARDT Italia**. Tutti i diritti riservati.
+© 2026 TAVARDT. Tutti i diritti riservati.
