@@ -1105,7 +1105,53 @@ python http2_kernel_dos_checker.py</div>
 </section>
 <section class="faq-section">
 <h2 class="faq-title">Domande Frequenti sulla Mitigazione DoS in HTTP/2 e Kernel Linux</h2>
-<div class="faq-list"><div class="faq-item"><div class="faq-question">Perché gli audit attivi di sovraccarico HTTP/2 e crash del kernel non devono essere eseguiti tramite browser?<span class="faq-toggle">+</span></div><div class="faq-answer">Gli audit di esaurimento dello stack TCP e del kernel richiedono raw socket e ispezione del filesystem /proc/sys dell'host, funzionalità non disponibili nella sandbox limitata del browser web. Per questo TAVARDT rende disponibili blueprint di configurazione convalidati e uno script CLI deterministico in Python per l'esecuzione locale sul server.</div></div><div class="faq-item"><div class="faq-question">Come agisce l'attacco HTTP/2 Rapid Reset (CVE-2023-44487) sui server web?<span class="faq-toggle">+</span></div><div class="faq-answer">L'attacco sfrutta il meccanismo di multiplexing del protocollo HTTP/2 inviando continue richieste HEADERS immediatamente seguite da frame RST_STREAM. Il server web alloca risorse per elaborare ciascuna richiesta prima di scartarla, generando un sovraccarico massiccio di CPU e memoria senza mai raggiungere il limite di connessioni simultanee.</div></div><div class="faq-item"><div class="faq-question">Quali parametri del kernel Linux (sysctl) sono fondamentali per mitigare la saturazione TCP?<span class="faq-toggle">+</span></div><div class="faq-answer">Tra i principali figurano net.ipv4.tcp_syncookies = 1 (protezione contro SYN flood), net.ipv4.tcp_max_syn_backlog = 8192 (coda di connessioni in sospeso), net.ipv4.tcp_fin_timeout = 15 (rilascio rapido di socket orfani) e net.ipv4.tcp_tw_reuse = 1 (riutilizzo sicuro di socket in TIME_WAIT).</div></div><div class="faq-item"><div class="faq-question">Qual è la differenza tra mitigare gli attacchi DoS a livello applicativo (L7) rispetto al livello di rete (L4)?<span class="faq-toggle">+</span></div><div class="faq-answer">Il livello L4 (firewall nftables) filtra pacchetti SYN anomali e connessioni sospette prima che raggiungano lo spazio utente, consumando una CPU minima. Il livello L7 (NGINX/proxy) ispeziona i flussi HTTP/2, limitando richieste e RST_STREAM. Un'architettura difensiva solida richiede l'azione coordinata di entrambi i livelli.</div></div><div class="faq-item"><div class="faq-question">Come implementare le direttive di mitigazione senza interrompere il traffico legittimo degli utenti?<span class="faq-toggle">+</span></div><div class="faq-answer">Si raccomanda di applicare i parametri in ambiente di staging o tramite canary deployment, monitorando metriche di latenza e contatori di scarto con nstat e dmesg. Le direttive NGINX devono conservare un margine sufficiente (es. da 64 a 128 stream simultanei) per servire gli utenti legittimi ad alte prestazioni.</div></div></div>
+<div class="faq-list">
+  <div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)" type="button">
+      <span>Perché gli audit attivi di sovraccarico HTTP/2 e crash del kernel non devono essere eseguiti tramite browser?</span>
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-body">
+      Gli audit di esaurimento dello stack TCP e del kernel richiedono raw socket e ispezione del filesystem /proc/sys dell'host, funzionalità non disponibili nella sandbox limitata del browser web. Per questo TAVARDT rende disponibili blueprint di configurazione convalidati e uno script CLI deterministico in Python per l'esecuzione locale sul server.
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)" type="button">
+      <span>Come agisce l'attacco HTTP/2 Rapid Reset (CVE-2023-44487) sui server web?</span>
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-body">
+      L'attacco sfrutta il meccanismo di multiplexing del protocollo HTTP/2 inviando continue richieste HEADERS immediatamente seguite da frame RST_STREAM. Il server web alloca risorse per elaborare ciascuna richiesta prima di scartarla, generando un sovraccarico massiccio di CPU e memoria senza mai raggiungere il limite di connessioni simultanee.
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)" type="button">
+      <span>Quali parametri del kernel Linux (sysctl) sono fondamentali per mitigare la saturazione TCP?</span>
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-body">
+      Tra i principali figurano net.ipv4.tcp_syncookies = 1 (protezione contro SYN flood), net.ipv4.tcp_max_syn_backlog = 8192 (coda di connessioni in sospeso), net.ipv4.tcp_fin_timeout = 15 (rilascio rapido di socket orfani) e net.ipv4.tcp_tw_reuse = 1 (riutilizzo sicuro di socket in TIME_WAIT).
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)" type="button">
+      <span>Qual è la differenza tra mitigare gli attacchi DoS a livello applicativo (L7) rispetto al livello di rete (L4)?</span>
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-body">
+      Il livello L4 (firewall nftables) filtra pacchetti SYN anomali e connessioni sospette prima che raggiungano lo spazio utente, consumando una CPU minima. Il livello L7 (NGINX/proxy) ispeziona i flussi HTTP/2, limitando richieste e RST_STREAM. Un'architettura difensiva solida richiede l'azione coordinata di entrambi i livelli.
+    </div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)" type="button">
+      <span>Come implementare le direttive di mitigazione senza interrompere il traffico legittimo degli utenti?</span>
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-body">
+      Si raccomanda di applicare i parametri in ambiente di staging o tramite canary deployment, monitorando metriche di latenza e contatori di scarto con nstat e dmesg. Le direttive NGINX devono conservare un margine sufficiente (es. da 64 a 128 stream simultanei) per servire gli utenti legittimi ad alte prestazioni.
+    </div>
+  </div>
+</div>
 </section>
 
 <div class="cta-card">
